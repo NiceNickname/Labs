@@ -1,0 +1,36 @@
+cmake_minimum_required(VERSION 3.26)
+project(Labs VERSION 0.1)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set_property(GLOBAL PROPERTY USE_FOLDERS TRUE)
+set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "")
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Labs)
+
+
+add_executable(${PROJECT_NAME})
+
+target_include_directories(${PROJECT_NAME} PRIVATE 
+    ${CMAKE_SOURCE_DIR}
+    ${PROJECT_NAME}/src/Common
+)
+
+target_sources(${PROJECT_NAME} PRIVATE
+    ${PROJECT_NAME}/src/Common/CmdLineParser/CmdLineParser.h
+    ${PROJECT_NAME}/src/Common/CmdLineParser/CmdLineParser.cpp
+    ${PROJECT_NAME}/src/Lab1/VelocityCalculator.h
+    ${PROJECT_NAME}/src/Lab1/VelocityCalculator.cpp
+    ${PROJECT_NAME}/src/Lab2/ThreeFiveSeven.h
+    ${PROJECT_NAME}/src/Lab2/ThreeFiveSeven.cpp
+    ${PROJECT_NAME}/src/Lab3/PositiveNegative.h
+    ${PROJECT_NAME}/src/Lab3/PositiveNegative.cpp
+    ${PROJECT_NAME}/src/Lab4/Spiral.h
+    ${PROJECT_NAME}/src/Lab4/Spiral.cpp
+    ${PROJECT_NAME}/src/Lab5/HexParser.h
+    ${PROJECT_NAME}/src/Lab5/HexParser.cpp
+    ${PROJECT_NAME}/src/main.cpp
+)
+
+if (MSVC)
+    add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+endif()
